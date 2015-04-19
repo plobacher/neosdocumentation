@@ -72,23 +72,23 @@ Nun benötigen wir ein Kontaktformular - dafür legen wir zunächst einen Ordner
 ```
 type: 'TYPO3.Form:Form'
 identifier: contact-form
-label: Contact
+label: 'Kontact'
 renderingOptions:
-    submitButtonLabel: Send
+  submitButtonLabel: 'Senden'
 renderables:
   -
     type: 'TYPO3.Form:Page'
     identifier: page-one
-    label: Contact
+    label: 'Kontact'
     renderables:
       -
         type: 'TYPO3.Form:SingleLineText'
         identifier: name
-        label: Name
+        label: 'Name'
         validators:
           - identifier: 'TYPO3.Flow:NotEmpty'
         properties:
-          placeholder: Name
+          placeholder: 'Name'
         defaultValue: ''
       -
         type: 'TYPO3.Form:SingleLineText'
@@ -103,30 +103,30 @@ renderables:
       -
         type: 'TYPO3.Form:MultiLineText'
         identifier: message
-        label: Message
+        label: 'Nachricht'
         validators:
           - identifier: 'TYPO3.Flow:NotEmpty'
         properties:
-          placeholder: 'Your Message'
+          placeholder: 'Deine Nachricht'
         defaultValue: ''
 finishers:
   -
     identifier: 'TYPO3.Form:Email'
     options:
-      templatePathAndFilename: resource://Schulung.Website/Private/Templates/Email/Message.txt
-      subject: Contact from example.net
-      recipientAddress: office@example.net
+      templatePathAndFilename: 'resource://Schulung.Website/Private/Templates/Email/Message.txt'
+      subject: 'Kontaktformular'
+      recipientAddress: 'office@example.net'
       recipientName: 'Office of Company'
-      senderAddress: server@example.net
-      senderName: Server example.net
-      replyToAddress: office@example.net
+      senderAddress: 'server@example.net'
+      senderName: 'Schulung Website'
+      replyToAddress: 'noreply@example.net'
       format: plaintext
   -
     identifier: 'TYPO3.Form:Confirmation'
     options:
       message: >
-        <h3>Thank you for your feedback</h3>
-        <p>We will process it as soon as possible.</p>
+        <h3>Vielen Dank für deine Nachricht</h3>
+        <p>Wir werden Ihnen so bald wie möglich antworten.</p>
 ```
 
 ## Email-Text
@@ -134,5 +134,9 @@ finishers:
 Nun legen wir noch die Datei `Packages/Sites/Schulung.Website/Resources/Private/Templates/Email/Message.txt` an (Ordner `Email` muss ebenfalls angelegt werden):
 
 ```
+Hallo,
 
-``
+<f:for each="{form.formState.formValues}" as="value" key="label">
+{label}: {value}
+</f:for>
+```
