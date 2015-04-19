@@ -320,7 +320,7 @@ Hiermit (`[tabName]:`) wird der konkrete Tab-Name bezeichnet - z.B. `stats:`
 
 Damit wird das Label für den Tab festgelegt
 
-## `ui: inspector: groups: [tabName]: position` (10)
+## `ui: inspector: tabs: [tabName]: position` (10)
 
 Position der Tabs. Je kleiner die Zahl, desto weiter links wird der Tab positioniert.
 
