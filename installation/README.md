@@ -122,7 +122,7 @@ cd TYPO3-Neos
 sudo ./flow flow:core:setfilepermissions shelluser wwwuser wwwgroup
 ```
 
-(Weitere Infos: `http://docs.typo3.org/flow/TYPO3FlowDocumentation/ TheDefinitiveGuide/PartII/Installation.html#file-permissions`)
+(Weitere Infos: http://docs.typo3.org/flow/TYPO3FlowDocumentation/TheDefinitiveGuide/PartII/Installation.html#file-permissions)
 
 * shelluser: Dies ist der User, mit dem man in der Konsole eingeloggt ist - kann mittels `whoami herausgefunden werden
 * wwwuser: Der User, unter dem der Webserver läuft (steht in der Datei `httpd.conf`) - unter Mac OS X z.B. `_www`
@@ -137,13 +137,13 @@ Eintrag für Apache:
 NameVirtualHost *:80 # sofern benötigt
 <VirtualHost *:80>
 
-DocumentRoot "/pfad/zum/webserver/TYPO3-Neos/Web/"
-# Während der Entwicklung sollte die folgende Zeile
-# auskommentiert werden, denn dies stellt den Context auf
-# "Production" - dies bedeutet: kein Logging, mit Caching, ...
-# Default ist "Development"
-SetEnv FLOW_CONTEXT Production
-ServerName neos.demo
+	DocumentRoot "/pfad/zum/webserver/TYPO3-Neos/Web/"
+	# Während der Entwicklung sollte die folgende Zeile
+	# auskommentiert werden, denn dies stellt den Context auf
+	# "Production" - dies bedeutet: kein Logging, mit Caching, ...
+	# Default ist "Development"
+	SetEnv FLOW_CONTEXT Production
+	ServerName neos.demo
 
 </VirtualHost>
 ```
@@ -271,11 +271,11 @@ Wenn das Paket nicht auf Packagist ist, muss man folgenden Code in die Datei `co
         "type": "git",
         "url": "git://github.com/acme/demo.git"
     },
-    …
+    ...
 ],
-…
+...
 "require": {
-    …,
+    ...,
     "acme/demo": "dev-master"
 }
 ```

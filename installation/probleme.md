@@ -2,9 +2,8 @@
 
 Dafür sorgen, dass nur passende Sourcen (und keine DEV-Sourcen) geladen werden:
 
-```
 https://gist.github.com/aertmann/d147aded4191ed23bef4
-```
+
 ---
 
 Sollte es zu Duplicate-Key Fehlern kommen, kann das folgende helfen:
@@ -14,7 +13,7 @@ Sollte es zu Duplicate-Key Fehlern kommen, kann das folgende helfen:
 ./flow doctrine:update
 ```
 
-Weitere Hilfe: `https://review.typo3.org/#/c/37191/`
+Weitere Hilfe: https://review.typo3.org/37191
 
 ---
 
