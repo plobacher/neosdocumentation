@@ -2,7 +2,7 @@
 
 Zu den ViewHelpern `image` und `uri.image` gibt es auch korrespondierende TypoScript-Objekte:
 
-
+```
 ## ImageUri object works exactly the same way as Media:Uri.Image view helper
 prototype(TYPO3.Media:ImageUri) {
 	@class = 'TYPO3\\Media\\TypoScriptObjects\\ImageUriImplementation'
@@ -37,3 +37,4 @@ prototype(TYPO3.Media:ImageTag) < prototype(TYPO3.TypoScript:Tag) {
 		}
 	}
 }
+```
