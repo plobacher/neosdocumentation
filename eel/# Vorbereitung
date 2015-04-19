@@ -1,0 +1,5 @@
+# Vorbereitung
+
+Zuerst das Neos Demo-Package löschen, da dieses fälschlicherweise von Neos ausgelesen wird (selbst wenn es deaktiviert ist)
+
+./flow package:delete --package-key TYPO3.NeosDemoTypo3Org
