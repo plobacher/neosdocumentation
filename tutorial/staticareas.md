@@ -23,8 +23,8 @@ In der Datei `` wird nun das entsprechende TypoScript hinzugefügt:
 ```
 content {
 	main = PrimaryContent {
-  	nodePath = 'footer'
-  }
+		nodePath = 'footer'
+	}
 }
 ```
 
@@ -45,9 +45,9 @@ Legt man nun eine Seite an und füllt in die Area `footer` Inhalte ein, so werde
 ```
 footer = TYPO3.Neos:ContentCollection {
 	// nodePath = ${q(site).find('footer').property('_path')}
-  // collection = ${q(site).children('footer').children()}
+	// collection = ${q(site).children('footer').children()}
 	nodePath = ${q(site).find('homepage').children('footer').property('_path')}
-  collection = ${q(site).find('homepage').children('footer').children()}
+	collection = ${q(site).find('homepage').children('footer').children()}
 }
 ```
 

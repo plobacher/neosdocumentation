@@ -1,8 +1,6 @@
 # Plugins
 
-
 ## Guestbook
-
 
 ### Package
 
@@ -55,24 +53,24 @@ Wir passen nun die Datei `Application/Schulung.Guestbook/Resources/Private/Templ
 
 ```
 <f:if condition="{entries}">
-    <f:then>
-        <f:for each="{entries}" as="entry">
-            <div id="gb_entry">
-                <p>
-                    Verfasst am
-                    <f:format.date format="d.m.Y, H:i">{entry.date}</f:format.date>
-                    von
-                    <f:link.email email="{entry.email}">{entry.author}</f:link.email>
-                </p>
-                <p>
-                    <f:format.nl2br>{entry.post}</f:format.nl2br>
-                </p>
-            </div>
-        </f:for>
-    </f:then>
-    <f:else>
-        <p>Keine Einträge vorhanden!</p>
-    </f:else>
+	<f:then>
+		<f:for each="{entries}" as="entry">
+			<div id="gb_entry">
+				<p>
+					Verfasst am
+					<f:format.date format="d.m.Y, H:i">{entry.date}</f:format.date>
+					von
+					<f:link.email email="{entry.email}">{entry.author}</f:link.email>
+				</p>
+				<p>
+					<f:format.nl2br>{entry.post}</f:format.nl2br>
+				</p>
+			</div>
+		</f:for>
+	</f:then>
+	<f:else>
+		<p>Keine Einträge vorhanden!</p>
+	</f:else>
 </f:if>
 <p><f:link.action action="new">Neuer Eintrag</f:link.action></p>
 ```
@@ -81,16 +79,16 @@ Zudem muss auch die Datei `Application/Schulung.Guestbook/Resources/Private/Temp
 
 ```
 <f:form action="create" name="newEntry" object="{entry}">
-    <label for="author">Name</label>
-    <f:form.textfield property="author" id="author" />
-    <br />
-    <label for="email">Email</label>
-    <f:form.textfield property="email" id="email" />
-    <br />
-    <label for="post">Eintrag</label>
-    <f:form.textarea property="post" id="post" />
-    <br />
-    <f:form.submit value="Erstellen" /></td>
+	<label for="author">Name</label>
+	<f:form.textfield property="author" id="author" />
+	<br />
+	<label for="email">Email</label>
+	<f:form.textfield property="email" id="email" />
+	<br />
+	<label for="post">Eintrag</label>
+	<f:form.textarea property="post" id="post" />
+	<br />
+	<f:form.submit value="Erstellen" /></td>
 </f:form>
 ```
 
@@ -108,92 +106,92 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Entry {
 
-  /**
-   * @var string
-   * @Flow\Validate(type="NotEmpty")
-   */
-  protected $author;
+	/**
+	 * @var string
+	 * @Flow\Validate(type="NotEmpty")
+	 */
+	protected $author;
 
-  /**
-   * @var string
-   * @Flow\Validate(type="NotEmpty")
-   */
-  protected $email;
+	/**
+	 * @var string
+	 * @Flow\Validate(type="NotEmpty")
+	 */
+	protected $email;
 
-  /**
-   * @var \DateTime
-   */
-  protected $date;
+	/**
+	 * @var \DateTime
+	 */
+	protected $date;
 
-  /**
-   * @var string
-   * @Flow\Validate(type="NotEmpty")
-   */
-  protected $post;
+	/**
+	 * @var string
+	 * @Flow\Validate(type="NotEmpty")
+	 */
+	protected $post;
 
-    public function __construct() {
-        $this->date = new \DateTime('now');
-    }
+	public function __construct() {
+		$this->date = new \DateTime('now');
+	}
 
-    /**
-   * @return string
-   */
-  public function getAuthor() {
-    return $this->author;
-  }
+	/**
+	 * @return string
+	 */
+	public function getAuthor() {
+		return $this->author;
+	}
 
-  /**
-   * @param string $author
-   * @return void
-   */
-  public function setAuthor($author) {
-    $this->author = $author;
-  }
+	/**
+	 * @param string $author
+	 * @return void
+	 */
+	public function setAuthor($author) {
+		$this->author = $author;
+	}
 
-  /**
-   * @return string
-   */
-  public function getEmail() {
-    return $this->email;
-  }
+	/**
+	 * @return string
+	 */
+	public function getEmail() {
+		return $this->email;
+	}
 
-  /**
-   * @param string $email
-   * @return void
-   */
-  public function setEmail($email) {
-    $this->email = $email;
-  }
+	/**
+	 * @param string $email
+	 * @return void
+	 */
+	public function setEmail($email) {
+		$this->email = $email;
+	}
 
-  /**
-   * @return \DateTime
-   */
-  public function getDate() {
-    return $this->date;
-  }
+	/**
+	 * @return \DateTime
+	 */
+	public function getDate() {
+		return $this->date;
+	}
 
-  /**
-   * @param \DateTime $date
-   * @return void
-   */
-  public function setDate(\DateTime $date) {
-    $this->date = $date;
-  }
+	/**
+	 * @param \DateTime $date
+	 * @return void
+	 */
+	public function setDate(\DateTime $date) {
+		$this->date = $date;
+	}
 
-  /**
-   * @return string
-   */
-  public function getPost() {
-    return $this->post;
-  }
+	/**
+	 * @return string
+	 */
+	public function getPost() {
+		return $this->post;
+	}
 
-  /**
-   * @param string $post
-   * @return void
-   */
-  public function setPost($post) {
-    $this->post = $post;
-  }
+	/**
+	 * @param string $post
+	 * @return void
+	 */
+	public function setPost($post) {
+		$this->post = $post;
+	}
 
 }
 ```
@@ -243,9 +241,9 @@ Nun benötigen wir eine entsprechende TypoScript-Datei: `Packages/Application/Sc
 ```
 prototype(Schulung.Guestbook:Display) < prototype(TYPO3.Neos:Plugin)
 prototype(Schulung.Guestbook:Display) {
-    package = 'Schulung.Guestbook'
-    controller = 'Entry'
-    action = 'index'
+	package = 'Schulung.Guestbook'
+	controller = 'Entry'
+	action = 'index'
 }
 ```
 
@@ -436,24 +434,24 @@ include: Library/Person.ts2
 ```
 prototype(Schulung.Person:ContactAddress) >
 prototype(Schulung.Person:ContactAddress) < prototype(TYPO3.Neos:Content) {
-  templatePath = 'resource://Schulung.Person/Private/Templates/NodeTypes/ContactAddress.html'
+	templatePath = 'resource://Schulung.Person/Private/Templates/NodeTypes/ContactAddress.html'
 
-  person = ${node.properties.person}
-  hasPerson = ${node.properties.person ? TRUE : FALSE}
+	person = ${node.properties.person}
+	hasPerson = ${node.properties.person ? TRUE : FALSE}
 
-  attributes = TYPO3.TypoScript:Attributes {
-    class = 'person-profile-inline'
-    style = 'background: #CCC; padding: 10px; margin-bottom: 10px;'
-    data-ttree-region = ${this.person.properties.postalAddressRegion}
-    data-ttree-country = ${this.person.properties.postalAddressCountry}
-  }
+	attributes = TYPO3.TypoScript:Attributes {
+		class = 'person-profile-inline'
+		style = 'background: #CCC; padding: 10px; margin-bottom: 10px;'
+		data-ttree-region = ${this.person.properties.postalAddressRegion}
+		data-ttree-country = ${this.person.properties.postalAddressCountry}
+	}
 
-  personName = ${this.person.properties.personName}
-  postalAddressStreetAddress = ${this.person.properties.postalAddressStreetAddress}
-  postalAddressCountry = ${this.person.properties.postalAddressCountry}
-  postalAddressPostalCode = ${this.person.properties.postalAddressPostalCode}
-  postalAddressLocality = ${this.person.properties.postalAddressLocality}
-  postalAddressRegion = ${this.person.properties.postalAddressRegion}
+	personName = ${this.person.properties.personName}
+	postalAddressStreetAddress = ${this.person.properties.postalAddressStreetAddress}
+	postalAddressCountry = ${this.person.properties.postalAddressCountry}
+	postalAddressPostalCode = ${this.person.properties.postalAddressPostalCode}
+	postalAddressLocality = ${this.person.properties.postalAddressLocality}
+	postalAddressRegion = ${this.person.properties.postalAddressRegion}
 }
 ```
 
@@ -461,30 +459,30 @@ prototype(Schulung.Person:ContactAddress) < prototype(TYPO3.Neos:Content) {
 
 ```
 prototype(TYPO3.Neos:PrimaryContent).SchulungPersonPerson {
-  condition = ${q(node).is('[instanceof Schulung.Person:Person]')}
-  type = 'Schulung.Person:Person'
-  @position = 'start'
+	condition = ${q(node).is('[instanceof Schulung.Person:Person]')}
+	type = 'Schulung.Person:Person'
+	@position = 'start'
 }
 
 prototype(Schulung.Person:Person) < prototype(TYPO3.TypoScript:Template) {
-  templatePath = 'resource://Schulung.Person/Private/Templates/NodeTypes/Person.html'
+	templatePath = 'resource://Schulung.Person/Private/Templates/NodeTypes/Person.html'
 
-  attributes = TYPO3.TypoScript:Attributes {
-    class = 'person-profile-page'
-    data-ttree-region = ${node.properties.postalAddressRegion}
-    data-ttree-country = ${node.properties.postalAddressCountry}
-  }
+	attributes = TYPO3.TypoScript:Attributes {
+		class = 'person-profile-page'
+		data-ttree-region = ${node.properties.postalAddressRegion}
+		data-ttree-country = ${node.properties.postalAddressCountry}
+	}
 
-  personName = ${node.properties.personName}
-  postalAddressStreetAddress = ${node.properties.postalAddressStreetAddress}
-  postalAddressCountry = ${node.properties.postalAddressCountry}
-  postalAddressPostalCode = ${node.properties.postalAddressPostalCode}
-  postalAddressLocality = ${node.properties.postalAddressLocality}
-  postalAddressRegion = ${node.properties.postalAddressRegion}
+	personName = ${node.properties.personName}
+	postalAddressStreetAddress = ${node.properties.postalAddressStreetAddress}
+	postalAddressCountry = ${node.properties.postalAddressCountry}
+	postalAddressPostalCode = ${node.properties.postalAddressPostalCode}
+	postalAddressLocality = ${node.properties.postalAddressLocality}
+	postalAddressRegion = ${node.properties.postalAddressRegion}
 
-  profile = TYPO3.Neos:ContentCollection {
-    nodePath = 'profile'
-  }
+	profile = TYPO3.Neos:ContentCollection {
+		nodePath = 'profile'
+	}
 }
 ```
 
@@ -501,29 +499,29 @@ include: resource://Schulung.Person/Private/TypoScript/Root.ts2
 ```
 {namespace neos=TYPO3\Neos\ViewHelpers}
 <div{attributes -> f:format.raw()}>
-  <f:if condition="{hasPerson}">
-    <f:then>
-      <div itemscope itemtype="http://schema.org/Person">
-        <div style="font-weight: bold;" itemprop="name">{personName}</div>
-        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-          <div itemprop="streetAddress">
-            {postalAddressStreetAddress}
-          </div>
-          <div>
-            <span itemprop="addressCountry">{postalAddressCountry}</span> -
-            <span itemprop="postalCode">{postalAddressPostalCode}</span>
-            <span itemprop="addressLocality">{postalAddressLocality}</span>
-          </div>
-        </div>
-      </div>
-    </f:then>
-    <f:else>
-      <strong>
-        Please select a Person<br/>
-        in the Inspector
-      </strong>
-    </f:else>
-  </f:if>
+	<f:if condition="{hasPerson}">
+		<f:then>
+			<div itemscope itemtype="http://schema.org/Person">
+				<div style="font-weight: bold;" itemprop="name">{personName}</div>
+				<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+					<div itemprop="streetAddress">
+						{postalAddressStreetAddress}
+					</div>
+					<div>
+						<span itemprop="addressCountry">{postalAddressCountry}</span> -
+						<span itemprop="postalCode">{postalAddressPostalCode}</span>
+						<span itemprop="addressLocality">{postalAddressLocality}</span>
+					</div>
+				</div>
+			</div>
+		</f:then>
+		<f:else>
+			<strong>
+				Please select a Person<br/>
+				in the Inspector
+			</strong>
+		</f:else>
+	</f:if>
 </div>
 ```
 
@@ -532,22 +530,22 @@ include: resource://Schulung.Person/Private/TypoScript/Root.ts2
 ```
 {namespace neos=TYPO3\Neos\ViewHelpers}
 <div{attributes -> f:format.raw()}>
-  <div itemscope itemtype="http://schema.org/Person">
-    <h1 itemprop="name">{personName}</h1>
-    <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-      <span itemprop="streetAddress">
-        {postalAddressStreetAddress}
-      </span> |
-      <span itemprop="addressCountry">{postalAddressCountry}</span>,
-      <span itemprop="postalCode">{postalAddressPostalCode}</span>,
-      <span itemprop="addressLocality">{postalAddressLocality}</span>,
-      <span itemprop="addressRegion">{postalAddressRegion}</span>
-    </span>
-  </div>
+	<div itemscope itemtype="http://schema.org/Person">
+		<h1 itemprop="name">{personName}</h1>
+		<span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+			<span itemprop="streetAddress">
+				{postalAddressStreetAddress}
+			</span> |
+			<span itemprop="addressCountry">{postalAddressCountry}</span>,
+			<span itemprop="postalCode">{postalAddressPostalCode}</span>,
+			<span itemprop="addressLocality">{postalAddressLocality}</span>,
+			<span itemprop="addressRegion">{postalAddressRegion}</span>
+		</span>
+	</div>
 
-  <div class="customer-profile">
-    {profile -> f:format.raw()}
-  </div>
+	<div class="customer-profile">
+		{profile -> f:format.raw()}
+	</div>
 </div>
 ```
 
@@ -571,26 +569,26 @@ use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
  */
 class PersonNodeLabelGenerator extends DefaultNodeLabelGenerator {
 
-  /**
-   * Render a node label
-   *
-   * @param \TYPO3\TYPO3CR\Domain\Model\AbstractNodeData $nodeData
-   * @param boolean $crop
-   * @return string
-   */
-  public function getLabel(AbstractNodeData $nodeData, $crop = TRUE) {
-    if ($nodeData->hasProperty('person') === TRUE && $nodeData->getProperty('person')) {
-      $label = 'Link to: ' . strip_tags($nodeData->getProperty('person')->getProperty('personName'));
-    } else {
-      $label = parent::getLabel($nodeData, FALSE);
-    }
+	/**
+	 * Render a node label
+	 *
+	 * @param \TYPO3\TYPO3CR\Domain\Model\AbstractNodeData $nodeData
+	 * @param boolean $crop
+	 * @return string
+	 */
+	public function getLabel(AbstractNodeData $nodeData, $crop = TRUE) {
+		if ($nodeData->hasProperty('person') === TRUE && $nodeData->getProperty('person')) {
+			$label = 'Link to: ' . strip_tags($nodeData->getProperty('person')->getProperty('personName'));
+		} else {
+			$label = parent::getLabel($nodeData, FALSE);
+		}
 
-    if ($crop === FALSE) {
-      return $label;
-    }
+		if ($crop === FALSE) {
+			return $label;
+		}
 
-    $croppedLabel = \TYPO3\Flow\Utility\Unicode\Functions::substr($label, 0, NodeInterface::LABEL_MAXIMUM_CHARACTERS);
-    return $croppedLabel . (strlen($croppedLabel) < strlen($label) ? ' …' : '');
-  }
+		$croppedLabel = \TYPO3\Flow\Utility\Unicode\Functions::substr($label, 0, NodeInterface::LABEL_MAXIMUM_CHARACTERS);
+		return $croppedLabel . (strlen($croppedLabel) < strlen($label) ? ' ...' : '');
+	}
 }
 ```

@@ -19,12 +19,12 @@ Dazu öffnen wir zunächst die Datei `Packages/Sites/Schulung.Website/Configurat
           position: 20
   properties:
     headerimage:
-     type: TYPO3\Media\Domain\Model\ImageVariant
-     ui:
-      label: 'Header Image'
-      reloadIfChanged: true
-      inspector:
-        group: image
+      type: TYPO3\Media\Domain\Model\ImageVariant
+      ui:
+        label: 'Header Image'
+        reloadIfChanged: true
+        inspector:
+          group: image
 ```
 
 ![Header Bild im Inspektor](../assets/tut-headerbild01.png)
@@ -76,4 +76,4 @@ headerimage = ${q(node).property('headerimage')}
 parts {
 ...
 
-``
+```

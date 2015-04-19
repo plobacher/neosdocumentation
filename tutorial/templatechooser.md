@@ -7,46 +7,46 @@ Schaut man sich die Datei `Packages/Application/TYPO3.Neos.NodeTypes/Configurati
 
 ```
 'TYPO3.Neos.NodeTypes:Page':
-	superTypes: ['TYPO3.Neos:Document']
-	childNodes:
-		main:
-			type: 'TYPO3.Neos:ContentCollection'
-	properties:
-		layout:
-		type: string
-		ui:
-			label: 'Layout for this page only'
-			reloadIfChanged: TRUE
-			inspector:
-				group: 'layout'
-				editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
-				editorOptions:
-					placeholder: 'Inherit from parent'
-					values:
-						'':
-							label: ''
-		subpageLayout:
-		type: string
-		ui:
-			label: 'Layout for subpages of this page'
-			inspector:
-				group: 'layout'
-				editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
-				editorOptions:
-					placeholder: 'Inherit from parent'
-					values:
-						'':
-							label: ''
-	ui:
-		label: 'Page'
-		icon: 'icon-file'
-		inspector:
-			groups:
-				document:
-					label: 'Title'
-				layout:
-					label: 'Layout'
-					position: 150
+  superTypes: ['TYPO3.Neos:Document']
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+  properties:
+    layout:
+    type: string
+    ui:
+      label: 'Layout for this page only'
+      reloadIfChanged: TRUE
+      inspector:
+        group: 'layout'
+        editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
+        editorOptions:
+          placeholder: 'Inherit from parent'
+          values:
+            '':
+              label: ''
+    subpageLayout:
+    type: string
+    ui:
+      label: 'Layout for subpages of this page'
+      inspector:
+        group: 'layout'
+        editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
+        editorOptions:
+          placeholder: 'Inherit from parent'
+          values:
+            '':
+              label: ''
+  ui:
+    label: 'Page'
+    icon: 'icon-file'
+    inspector:
+      groups:
+        document:
+          label: 'Title'
+        layout:
+          label: 'Layout'
+          position: 150
 ```
 
 ## Erweitern der Definition um Templates
@@ -55,25 +55,25 @@ Um nun diese Definition zu erweitern, schreiben wir in die Datei `` folgenden Co
 
 ```
 'TYPO3.Neos.NodeTypes:Page':
-	properties:
-		layout:
-			ui:
-				inspector:
-					editorOptions:
-						values:
-							'default':
-								label: 'Default'
-							'about':
-								label: 'About page'
-		subpageLayout:
-			ui:
-				inspector:
-					editorOptions:
-						values:
-							'default':
-								label: 'Default'
-							'about':
-								label: 'About page'
+  properties:
+    layout:
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              'default':
+                label: 'Default'
+              'about':
+                label: 'About page'
+    subpageLayout:
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              'default':
+                label: 'Default'
+              'about':
+                label: 'About page'
 ```
 
 ## Erweitern der TypoScript-Definition
@@ -85,7 +85,7 @@ default < page
 
 about < page
 about.body {
-		templatePath = 'resource://Schulung.Website/Private/Templates/Page/About.html'
+	templatePath = 'resource://Schulung.Website/Private/Templates/Page/About.html'
 }
 ```
 

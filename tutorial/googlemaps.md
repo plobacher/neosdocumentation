@@ -2,7 +2,6 @@
 
 Die Idee dahinter ist, dass man ein Content-Objekt "Google-Maps" einfügen kann, welches eine Location anzeigt. Diese wird per Koordinaten im Inspektor festgelegt.
 
-
 Zunächst muss also erst einmal die NodeTypes Definition erweitert werden `Schulung.Website/Configuration/NodeTypes.yaml`:
 
 ```
@@ -27,10 +26,10 @@ Zunächst muss also erst einmal die NodeTypes Definition erweitert werden `Schul
     longitude:
       type: 'string'
       ui:
-       label: 'Longitude'
-       reloadIfChanged: true
-       inspector:
-         group: 'address'
+        label: 'Longitude'
+        reloadIfChanged: true
+        inspector:
+          group: 'address'
 ```
 
 ## TypoScript

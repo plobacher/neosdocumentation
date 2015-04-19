@@ -53,19 +53,19 @@ Im Verzeichnis `Packages/Application/Schulung.Meta/Resources/Private/` legen wir
 
 ```
 page.head.metadata {
-    description = TYPO3.TypoScript:Tag {
-    tagName = 'meta'
-    attributes {
-        name = 'description'
-        content = TYPO3.TypoScript:Value
-        content.value = ${q(node).property('metadescription')}
-    }
+	description = TYPO3.TypoScript:Tag {
+	tagName = 'meta'
+	attributes {
+		name = 'description'
+		content = TYPO3.TypoScript:Value
+		content.value = ${q(node).property('metadescription')}
+	}
 }
 ```
 
 ### TypoScript (Site)
 
-Dieses TypoScript müssen wir nun in der Datei `` inkludieren - dazu tragen wir folgenden Code möglichst weit vorne ein:
+Dieses TypoScript müssen wir nun in der Datei `Packages/Application/Schulung.Meta/Resources/Private/TypoScript/Root.ts2` inkludieren - dazu tragen wir folgenden Code möglichst weit vorne ein:
 
 ```
 include: resource://Schulung.Meta/Private/TypoScript/Root.ts2
@@ -78,17 +78,16 @@ Weiter unten in der Datei müssen wir nun nur noch dafür Sorge tragen, dass die
 
 ```
 ...
-    head {
-      stylesheets = TS:Template
-      stylesheets {
-         ...
-      }
-      metadata = TS:Template {
-        templatePath = 'resource://Schulung.Website/Private/Templates/Page/MainTemplate.html'
-        sectionName = 'metadata'
-      }
-    }
-  body {
+	head {
+		stylesheets = TS:Template {
+			...
+		}
+		metadata = TS:Template {
+			templatePath = 'resource://Schulung.Website/Private/Templates/Page/MainTemplate.html'
+			sectionName = 'metadata'
+		}
+	}
+	body {
 ```
 
 ### HTML-Template (Site)
@@ -97,22 +96,22 @@ Im HTML-Template der Site müssen wir nun noch im Head-Bereich dafür sorgen, da
 
 ```
 ...
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Little Bean Roastery</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Little Bean Roastery</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <f:section name="meta">
-      {description -> f:format.raw()} 
-    </f:section>
+		<f:section name="meta">
+			{description -> f:format.raw()}
+		</f:section>
 
-    <f:section name="stylesheets">
-      ...
-    </f:section>
-  </head>
-  ...
+		<f:section name="stylesheets">
+			...
+		</f:section>
+	</head>
+	...
 ```
 
 ### Abfrage, ob Description gesetzt ist
@@ -185,14 +184,13 @@ Wir ergänzen nun das TypoScript unter `Packages/Application/Schulung.Meta/Resou
 
 ```
 page.head.metadata {
-    description = TYPO3.TypoScript:Tag {
-...
-    }
-    canonicalTag = TYPO3.TypoScript:Template
-    canonicalTag {
-        templatePath = 'resource://Schulung.Meta/Private/Templates/TypoScript/CanonicalTag.html'
-        canonicalUrl = ${q(node).property('canonicalUrl')}
-    }
+	description = TYPO3.TypoScript:Tag {
+		...
+	}
+	canonicalTag = TYPO3.TypoScript:Template {
+		templatePath = 'resource://Schulung.Meta/Private/Templates/TypoScript/CanonicalTag.html'
+		canonicalUrl = ${q(node).property('canonicalUrl')}
+	}
 }
 ```
 
@@ -212,8 +210,8 @@ Nun müssen wir noch das Site-Template `` entsprechend anpassen:
 
 ```
 <f:section name="metadata">
-  {description -> f:format.raw()}
-  {canonicalTag -> f:format.raw()}
+	{description -> f:format.raw()}
+	{canonicalTag -> f:format.raw()}
 </f:section>
 ```
 ### Übung

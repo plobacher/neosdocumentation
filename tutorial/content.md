@@ -1,6 +1,5 @@
 # Content
 
-
 ## Content-Marker
 
 Um grundsätzlich Content auf der Seite einzufügen, verwenden wir das Objekt `PrimaryContent`. Dieses können wir in der Datei `Packages/Sites/Schulung.Website/Resources/Private/TypoScripts/Library/Root.ts2` referenzieren:
@@ -8,12 +7,12 @@ Um grundsätzlich Content auf der Seite einzufügen, verwenden wir das Objekt `P
 ```
 ...
 footer {
-  ...
+	...
 }
 content {
-  main = PrimaryContent {
-    nodePath = 'main'
-  }
+	main = PrimaryContent {
+		nodePath = 'main'
+	}
 }
 ...
 ```
@@ -134,24 +133,24 @@ Wir ersetzen den obigen Code mit dem folgenden:
 
 ```
 prototype(Vendor:YourContentElementName) < prototype(TYPO3.Neos:Content) {
-        templatePath = 'resource://Vendor.Site/Private/Templates/TypoScriptObjects/YourContentElementName.html'
+	templatePath = 'resource://Vendor.Site/Private/Templates/TypoScriptObjects/YourContentElementName.html'
 
-        headline = ${q(node).property('headline')}
-        subheadline = ${q(node).property('subheadline')}
-        text = ${q(node).property('text')}
+	headline = ${q(node).property('headline')}
+	subheadline = ${q(node).property('subheadline')}
+	text = ${q(node).property('text')}
 }
 ```
 
 ```
 {namespace neos=TYPO3\Neos\ViewHelpers}
 <article>
-        <header>
-                {neos:contentElement.editable(property: 'headline', tag: 'h2')}
-                {neos:contentElement.editable(property: 'subheadline', tag: 'h3')}
-        </header>
-        <div>
-                {neos:contentElement.editable(property: 'text')}
-        </div>
+	<header>
+		{neos:contentElement.editable(property: 'headline', tag: 'h2')}
+		{neos:contentElement.editable(property: 'subheadline', tag: 'h3')}
+	</header>
+	<div>
+		{neos:contentElement.editable(property: 'text')}
+	</div>
 </article>
 ```
 
@@ -183,10 +182,10 @@ Nun eine Erweiterung des TypoScripts:
 
 ```
 prototype(Schulung.Website:YouTube) < prototype(TYPO3.Neos:Content) {
-        templatePath = 'resource://Acme.Demo/Private/Templates/TypoScriptObjects/YouTube.html'
-        videoUrl = ${q(node).property('videoUrl')}
-        width = '640'
-        height = '360'
+	templatePath = 'resource://Acme.Demo/Private/Templates/TypoScriptObjects/YouTube.html'
+	videoUrl = ${q(node).property('videoUrl')}
+	width = '640'
+	height = '360'
 }
 ```
 
@@ -200,7 +199,7 @@ Zudem ist auch eine manuelle Einbindung möglich:
 
 ```
 page.body.parts.teaserVideo = Schulung.Website:YouTube {
-  videoUrl = 'http://youtube.com/.....'
+	videoUrl = 'http://youtube.com/.....'
 }
 ```
 
@@ -214,20 +213,20 @@ Für das Zitat-Element müssen wir die Datei `Packages/Sites/Schulung.Website/Co
   ui:
     label: 'Zitat'
     inspector:
-       groups:
-         quoteproperties:
-           label: 'Zitat Optionen'
-           position: 5
+      groups:
+        quoteproperties:
+          label: 'Zitat Optionen'
+          position: 5
     icon: 'icon-file-text'
   properties:
     blockquote:
-      type: string
+      type: 'string'
       ui:
         label: 'Zitat'
         inlineEditable: TRUE
         reloadIfChanged: TRUE
     sourcetitle:
-      type: string
+      type: 'string'
       defaultValue: 'Titel der Zitat-Quelle'
       ui:
         label: 'Titel der Zitat-Quelle'
@@ -243,10 +242,10 @@ Dazu fügen wir folgenden Code an das Ende der Datei `Packages/Sites/Schulung.We
 ```
 # Quote TypoScript Object
 prototype(Schulung.Website:Quote) < prototype(TYPO3.Neos:Content) {
-   templatePath = 'resource://Schulung.Website/Private/Templates/TypoScriptObjects/Quote.html'
-   blockquote = ${q(node).property('blockquote')}
-   sourceurl = ${q(node).property('sourceurl')}
-   sourcetitle = ${q(node).property('sourcetitle')}
+	templatePath = 'resource://Schulung.Website/Private/Templates/TypoScriptObjects/Quote.html'
+	blockquote = ${q(node).property('blockquote')}
+	sourceurl = ${q(node).property('sourceurl')}
+	sourcetitle = ${q(node).property('sourcetitle')}
 }
 ```
 
@@ -276,22 +275,22 @@ Legen wir dazu also eine Datei `Quote.css` im Verzeichnis `Packages/Sites/Schulu
 
 ```
 blockquote {
-    background: #f9f9f9;
-    border-left: 10px solid #ccc;
-    margin: 1.5em 10px;
-    padding: .5em 10px;
-    quotes:"\201C""\201D""\2018""\2019";
+	background: #f9f9f9;
+	border-left: 10px solid #ccc;
+	margin: 1.5em 10px;
+	padding: .5em 10px;
+	quotes:"\201C""\201D""\2018""\2019";
 }
 blockquote:before {
-    color:#ccc;
-    content:open-quote;
-    font-size:4em;
-    line-height:.1em;
-    margin-right:.25em;
-    vertical-align:-.4em;
+	color:#ccc;
+	content:open-quote;
+	font-size:4em;
+	line-height:.1em;
+	margin-right:.25em;
+	vertical-align:-.4em;
 }
 blockquote p {
-    display:inline;
+	display:inline;
 }
 ```
 
@@ -300,8 +299,8 @@ Nun müssen wir das Stylesheet noch entsprechend einbinden:
 ```
 ...
 <f:section name="stylesheets">
-  ...
-  <link rel="stylesheet" href="{f:uri.resource(path: 'Css/Quote.css', package: 'Schulung.Website')}" media="all" />
+	...
+	<link rel="stylesheet" href="{f:uri.resource(path: 'Css/Quote.css', package: 'Schulung.Website')}" media="all" />
 </f:section>
 ...
 ```
@@ -327,16 +326,16 @@ Nun müssen wir das Stylesheet noch entsprechend einbinden:
 
 ```
 prototype(Acme.Demo:VideoGrid) {
-  // templatePath = 'resource://Acme.Demo/Private/Templates/TypoScriptObjects/VideoGrid.html'
+	// templatePath = 'resource://Acme.Demo/Private/Templates/TypoScriptObjects/VideoGrid.html'
 
-  videoRenderer = Acme.Demo:YouTube
-  textRenderer = TYPO3.Neos.NodeTypes:Text
+	videoRenderer = Acme.Demo:YouTube
+	textRenderer = TYPO3.Neos.NodeTypes:Text
 
-  video0 = ${q(node).children('video0').get(0)}
-  video1 = ${q(node).children('video1').get(0)}
+	video0 = ${q(node).children('video0').get(0)}
+	video1 = ${q(node).children('video1').get(0)}
 
-  text0 = ${q(node).children('text0').get(0)}
-  text1 = ${q(node).children('text1').get(0)}
+	text0 = ${q(node).children('text0').get(0)}
+	text1 = ${q(node).children('text1').get(0)}
 }
 ```
 
@@ -349,17 +348,15 @@ prototype(Acme.Demo:VideoGrid) {
 <ts:render path="textRenderer" context="{node: text1}" />
 ```
 
-
-
 ## Content-Strukturelement: Content-Section
 
 Wenn wir den Inhalt analysieren, den wir vorhin ersetzt haben, fällt uns bei allen drei Abschnitten der folgende Aufbau auf:
 
 ```
 <section class="white centered">
-  <div class="container">
-  ...
-  </div>
+	<div class="container">
+	...
+	</div>
 </section>
 ```
 
@@ -370,7 +367,6 @@ Lediglich die Attribute in der `class` Eigenschaft der `section` ändert sich. M
 * `white no-padding`
 
 Wir wollen diesen Container nun über ein Inhaltselement realisieren. Dafür fügen wir folgenden Code in die Datei `sPackages/Sites/Schulung.Website/Configuration/NodeTypes.yaml` ein:
-
 
 ```
 'Schulung.Website:Section':
@@ -444,9 +440,9 @@ Nun legen wir die Datei `Sites/Schulung.Website/Resources/Private/Templates/Node
 
 ```
 <section class="{background} {f:if(condition:centered, then: 'centered')} {border} {f:if(condition:nopadding, then: 'no-padding')}">
-    <div class="container">
-        {content -> f:format.raw()}
-    </div>
+	<div class="container">
+		{content -> f:format.raw()}
+	</div>
 </section>
 ```
 
@@ -454,9 +450,9 @@ Nun müssen wir noch die TypoScript-Definition erweitern - dies geschieht in der
 
 ```
 prototype(Schulung.Website:Section) {
-  content = TYPO3.Neos:ContentCollection {
-    nodePath = 'content'
-  }
+	content = TYPO3.Neos:ContentCollection {
+		nodePath = 'content'
+	}
 }
 ```
 
@@ -466,12 +462,12 @@ Wenn wir uns den vorhin entfernten Code wieder anschauen, stellen wir fest, dass
 
 ```
 <div class="row">
-  <div class="col-sm-6">
-  ...
-  </div>
-  <div class="col-sm-6">
-  ...
-  </div>
+	<div class="col-sm-6">
+	...
+	</div>
+	<div class="col-sm-6">
+	...
+	</div>
 </div>
 
 ```
@@ -495,8 +491,8 @@ Um die beiden Dateien zu hosten, legen wir ein Verzeichnis `NodeTypes` innerhalb
 # Adjust "MultiColumn" element to Twitter bootstrap CSS classes
 #
 prototype(TYPO3.Neos.NodeTypes:MultiColumn) {
-  attributes.class = 'row'
-  columns.iterationName = 'multiColumnIteration'
+	attributes.class = 'row'
+	columns.iterationName = 'multiColumnIteration'
 }
 ```
 
@@ -505,7 +501,7 @@ prototype(TYPO3.Neos.NodeTypes:MultiColumn) {
 # Adjust "MultiColumnItem" element to Twitter bootstrap CSS classes
 #
 prototype(TYPO3.Neos.NodeTypes:MultiColumnItem) {
-  attributes.class = ${'col-sm-' + String.split(q(node).parent().property('layout'), '-')[multiColumnIteration.index]}
+	attributes.class = ${'col-sm-' + String.split(q(node).parent().property('layout'), '-')[multiColumnIteration.index]}
 }
 
 ```
@@ -603,13 +599,13 @@ Nun benötigen wir noch ein entsprechendes HTML-Template, welches wir als Datei 
 ```
 {namespace neos=TYPO3\Neos\ViewHelpers}
 <div>
-  <span class="{icon} type-icon"></span>
-  {neos:contentElement.editable(property: 'title')}
+	<span class="{icon} type-icon"></span>
+	{neos:contentElement.editable(property: 'title')}
 
-  {neos:contentElement.editable(property: 'text')}
-  <f:if condition="{link}">
-    <p><neos:link.node node="{link}" class="btn btn-default">{neos:contentElement.editable(property: 'linktext', tag: 'span')}</neos:link.node></p>
-  </f:if>
+	{neos:contentElement.editable(property: 'text')}
+	<f:if condition="{link}">
+		<p><neos:link.node node="{link}" class="btn btn-default">{neos:contentElement.editable(property: 'linktext', tag: 'span')}</neos:link.node></p>
+	</f:if>
 </div>
 ```
 
@@ -672,24 +668,24 @@ In der Datei `Packages/Sites/Schulung.Website/Resources/Private/TypoScripts/Libr
 # "Carousel" element
 #
 prototype(Schulung.Website:Carousel) {
-  carouselitems = TYPO3.Neos:ContentCollection {
-    nodePath = 'carouselitems'
-    iterationName = 'carouselitemsIteration'
-    attributes.class = 'carousel-inner'
-  }
+	carouselitems = TYPO3.Neos:ContentCollection {
+		nodePath = 'carouselitems'
+		iterationName = 'carouselitemsIteration'
+		attributes.class = 'carousel-inner'
+	}
 
-  carouselitemArray = ${q(node).children('carouselitems').children('[instanceof TYPO3.Neos.NodeTypes:Image]')}
+	carouselitemArray = ${q(node).children('carouselitems').children('[instanceof TYPO3.Neos.NodeTypes:Image]')}
 
-  // Enhance image prototype for the carousel
-  prototype(TYPO3.Neos.NodeTypes:Image) {
-    // Render images in the carousel with a special template.
-    templatePath = 'resource://Schulung.Website/Private/Templates/TypoScriptObjects/Carouselitem.html'
+	// Enhance image prototype for the carousel
+	prototype(TYPO3.Neos.NodeTypes:Image) {
+		// Render images in the carousel with a special template.
+		templatePath = 'resource://Schulung.Website/Private/Templates/TypoScriptObjects/Carouselitem.html'
 
-    attributes.class = ${'item' + (carouselIitemsIteration.isFirst ? ' active' : '')}
+		attributes.class = ${'item' + (carouselIitemsIteration.isFirst ? ' active' : '')}
 
-    // We want to use the item iterator in the template so we have to store it in ts.
-    iteration = ${carouselitemsIteration}
-  }
+		// We want to use the item iterator in the template so we have to store it in ts.
+		iteration = ${carouselitemsIteration}
+	}
 }
 ```
 
@@ -742,4 +738,3 @@ Schließlich wird noch ein Template benötigt um die Image-Items zu rendern, fü
   </div>
 </div>
 ```
-
