@@ -672,23 +672,23 @@ In der Datei `Packages/Sites/Schulung.Website/Resources/Private/TypoScripts/Libr
 # "Carousel" element
 #
 prototype(Schulung.Website:Carousel) {
-  carouselItems = TYPO3.Neos:ContentCollection {
-    nodePath = 'carouselItems'
-    iterationName = 'carouselItemsIteration'
+  carouselitems = TYPO3.Neos:ContentCollection {
+    nodePath = 'carouselitems'
+    iterationName = 'carouselitemsIteration'
     attributes.class = 'carousel-inner'
   }
 
-  carouselItemArray = ${q(node).children('carouselItems').children('[instanceof TYPO3.Neos.NodeTypes:Image]')}
+  carouselitemArray = ${q(node).children('carouselitems').children('[instanceof TYPO3.Neos.NodeTypes:Image]')}
 
   // Enhance image prototype for the carousel
   prototype(TYPO3.Neos.NodeTypes:Image) {
     // Render images in the carousel with a special template.
-    templatePath = 'resource://Schulung.Website/Private/Templates/TypoScriptObjects/CarouselItem.html'
+    templatePath = 'resource://Schulung.Website/Private/Templates/TypoScriptObjects/Carouselitem.html'
 
-    attributes.class = ${'item' + (carouselItemsIteration.isFirst ? ' active' : '')}
+    attributes.class = ${'item' + (carouselIitemsIteration.isFirst ? ' active' : '')}
 
     // We want to use the item iterator in the template so we have to store it in ts.
-    iteration = ${carouselItemsIteration}
+    iteration = ${carouselitemsIteration}
   }
 }
 ```
@@ -702,7 +702,7 @@ Das Haupt-Template wiederum platzieren wir hier: `Packages/Sites/Schulung.Websit
   <div class="carousel slide" id="c{node.identifier}">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-      <f:for each="{carouselItemArray}" as="item" iteration="itemIterator">
+      <f:for each="{carouselitemArray}" as="item" iteration="itemIterator">
         <li data-target="#c{node.identifier}" data-slide-to="{itemIterator.index}" class="{f:if(condition: itemIterator.isFirst, then: 'active')}"></li>
       </f:for>
     </ol>
