@@ -11,7 +11,7 @@
    * [Kontext](tsbasics/kontext.md)
    * [Syntax](tsbasics/syntax.md)
    * [Objekte & Prototypen](tsbasics/objekte-uebersicht.md)
-   * [Best pratices](tsmisc/README.md)
+   * [Best practices](tsbasics/best-practices.md)
 * [Tutorial](tutorial/README.md)
    * [Installation](tutorial/installation.md)
    * [Neuanlegen einer Site](tutorial/neusite.md)
