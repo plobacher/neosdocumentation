@@ -6,18 +6,17 @@ Um sich das gesamte TypoScript kurz vor dem Parsing anzuzeigen, muss man in die 
 
 ```
 Packages/Application/TYPO3.Neos/Classes/TYPO3/Neos/Domain/Service/TypoScriptService.php
-
 ```
 
 Etwa in Zeile 155 kann man dort folgenden Code (mittlere Zeile) hinterlegen:
 
 ```
 ...
-		$mergedTypoScriptCode .= $this->getTypoScriptIncludes($this->appendTypoScriptIncludes);
+	$mergedTypoScriptCode .= $this->getTypoScriptIncludes($this->appendTypoScriptIncludes);
 
-		echo $mergedTypoScriptCode; die();
-		
-		return $this->typoScriptParser->parse($mergedTypoScriptCode, $siteRootTypoScriptPathAndFilename);
+	echo $mergedTypoScriptCode; die();
+
+	return $this->typoScriptParser->parse($mergedTypoScriptCode, $siteRootTypoScriptPathAndFilename);
 ...
 ```
 
@@ -33,11 +32,9 @@ $typoScriptRuntime->pushContextArray(array(
 	'account' => $this->securityContext->canBeInitialized() ? $this->securityContext->getAccount() : NULL,
 	'editPreviewMode' => isset($this->variables['editPreviewMode']) ? $this->variables['editPreviewMode'] : NULL
 ));
-
 ```
 
 Später kommt noch der Request via `'request' => $this->controllerContext->getRequest()` hinzu.
-```
 
 Diese bedeuten wie wie folgt:
 
