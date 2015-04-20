@@ -51,7 +51,7 @@ Created .../Schulung.Guestbook/Resources/Private/Templates/Entry/Show.html
 
 Wir passen nun die Datei `Application/Schulung.Guestbook/Resources/Private/Templates/Entry/Index.html` an:
 
-```
+```html
 <f:if condition="{entries}">
 	<f:then>
 		<f:for each="{entries}" as="entry">
@@ -77,7 +77,7 @@ Wir passen nun die Datei `Application/Schulung.Guestbook/Resources/Private/Templ
 
 Zudem muss auch die Datei `Application/Schulung.Guestbook/Resources/Private/Templates/Entry/New.html` angepasst werden:
 
-```
+```html
 <f:form action="create" name="newEntry" object="{entry}">
 	<label for="author">Name</label>
 	<f:form.textfield property="author" id="author" />
@@ -94,7 +94,7 @@ Zudem muss auch die Datei `Application/Schulung.Guestbook/Resources/Private/Temp
 
 ### Validierung und setzen des Datums
 
-```
+```php
 <?php
 namespace Schulung\Guestbook\Domain\Model;
 
@@ -496,7 +496,7 @@ include: resource://Schulung.Person/Private/TypoScript/Root.ts2
 
 `Packages/Application/Schulung.Person/Resources/Private/Templates/NodeTypes/ContactAddress.html`
 
-```
+```html
 {namespace neos=TYPO3\Neos\ViewHelpers}
 <div{attributes -> f:format.raw()}>
 	<f:if condition="{hasPerson}">
@@ -527,7 +527,7 @@ include: resource://Schulung.Person/Private/TypoScript/Root.ts2
 
 `Packages/Application/Schulung.Person/Resources/Private/Templates/NodeTypes/Person.html`
 
-```
+```html
 {namespace neos=TYPO3\Neos\ViewHelpers}
 <div{attributes -> f:format.raw()}>
 	<div itemscope itemtype="http://schema.org/Person">
@@ -553,7 +553,7 @@ include: resource://Schulung.Person/Private/TypoScript/Root.ts2
 
 `Packages/Application/Schulung.Person/Classes/Schulung/Person/Domain/Model/PersonNodeLabelGenerator.php`
 
-```
+```php
 <?php
 namespace Schulung\Person\Domain\Model;
 
