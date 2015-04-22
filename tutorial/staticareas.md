@@ -32,7 +32,7 @@ content {
 
 Auf das HTML-Template muss entsprechend angepasst werden:
 
-```
+```html
 <div class="col-sm-3">
 	<p>{content.footer -> f:format.raw()}</p>
 </div>
