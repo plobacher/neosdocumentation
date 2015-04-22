@@ -19,7 +19,7 @@ content {
 
 Anschließend müssen wir das Template entsprechend anpassen. Folgenden Code nehmen wir dazu raus und ersetzen ihn entsprechend:
 
-```
+```html
 <section class="white centered">
   <div class="container">
     <div class="row">
@@ -141,7 +141,7 @@ prototype(Vendor:YourContentElementName) < prototype(TYPO3.Neos:Content) {
 }
 ```
 
-```
+```html
 {namespace neos=TYPO3\Neos\ViewHelpers}
 <article>
 	<header>
@@ -191,7 +191,7 @@ prototype(Schulung.Website:YouTube) < prototype(TYPO3.Neos:Content) {
 
 Schließlich das Template:
 
-```
+```html
 <iframe width="{width}" height="{height}" src="{videoUrl}" frameborder="0" allowfullscreen></iframe>
 ```
 
@@ -251,7 +251,7 @@ prototype(Schulung.Website:Quote) < prototype(TYPO3.Neos:Content) {
 
 Nun müssen wir ein Verzeichnis `TypoScriptObjects` innerhalb von `Packages/Site/Schulung.Website/Private/Templates/` an (sofern noch nicht vorhanden) und legen dorthinein eine Datei `Quote.html` mit folgendem Inhalt:
 
-```
+```html
 {namespace t=TYPO3\Neos\ViewHelpers}
 <t:contentElement node="{node}">
     <blockquote cite="{f:uri.external(uri: '{sourceurl}', defaultScheme: 'http')}">
@@ -273,7 +273,7 @@ Nun müssen wir ein Verzeichnis `TypoScriptObjects` innerhalb von `Packages/Site
 Zur optimalen Darstellung benötigen wir nun noch ein Stylesheet.
 Legen wir dazu also eine Datei `Quote.css` im Verzeichnis `Packages/Sites/Schulung.Website/Resources/Public/Css/` mit dem folgenden Inhalt an:
 
-```
+```css
 blockquote {
 	background: #f9f9f9;
 	border-left: 10px solid #ccc;
@@ -296,7 +296,7 @@ blockquote p {
 
 Nun müssen wir das Stylesheet noch entsprechend einbinden:
 
-```
+```html
 ...
 <f:section name="stylesheets">
 	...
@@ -339,7 +339,7 @@ prototype(Acme.Demo:VideoGrid) {
 }
 ```
 
-```
+```html
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
 <ts:render path="videoRenderer" context="{node: video0}" />
 <ts:render path="textRenderer" context="{node: text0}" />
@@ -352,7 +352,7 @@ prototype(Acme.Demo:VideoGrid) {
 
 Wenn wir den Inhalt analysieren, den wir vorhin ersetzt haben, fällt uns bei allen drei Abschnitten der folgende Aufbau auf:
 
-```
+```html
 <section class="white centered">
 	<div class="container">
 	...
@@ -438,7 +438,7 @@ Wir wollen diesen Container nun über ein Inhaltselement realisieren. Dafür fü
 
 Nun legen wir die Datei `Sites/Schulung.Website/Resources/Private/Templates/NodeTypes/Section.html` mit dem folgenden Inhalt an:
 
-```
+```html
 <section class="{background} {f:if(condition:centered, then: 'centered')} {border} {f:if(condition:nopadding, then: 'no-padding')}">
 	<div class="container">
 		{content -> f:format.raw()}
@@ -460,7 +460,7 @@ prototype(Schulung.Website:Section) {
 
 Wenn wir uns den vorhin entfernten Code wieder anschauen, stellen wir fest, dass es ein zweispaltiges Elemente gab, mit dem folgenden Aufbau:
 
-```
+```html
 <div class="row">
 	<div class="col-sm-6">
 	...
@@ -596,7 +596,7 @@ Der Teaser selbst ist wieder ein NodeType, den wir in der Datei `Packages/Sites/
 
 Nun benötigen wir noch ein entsprechendes HTML-Template, welches wir als Datei `Packages/Sites/Schulung.Website/Resources/Private/Templates/NodeTypes/Teaser.html` anlegen und mit folgendem Inhalt füllen:
 
-```
+```html
 {namespace neos=TYPO3\Neos\ViewHelpers}
 <div>
 	<span class="{icon} type-icon"></span>
@@ -691,7 +691,7 @@ prototype(Schulung.Website:Carousel) {
 
 Das Haupt-Template wiederum platzieren wir hier: `Packages/Sites/Schulung.Website/Resources/Private/Templates/NodeTypes/Carousel.html` :
 
-```
+```html
 {namespace neos=TYPO3\Neos\ViewHelpers}
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
 <div{attributes -> f:format.raw()}>
@@ -719,7 +719,7 @@ Das Haupt-Template wiederum platzieren wir hier: `Packages/Sites/Schulung.Websit
 
 Schließlich wird noch ein Template benötigt um die Image-Items zu rendern, für das wir die Datei `CarouselItem.html` im Verzeichnis `Packages/Sites/Schulung.Website/Private/Templates/TypoScriptObjects/` anlegen:
 
-```
+```html
 {namespace neos=TYPO3\Neos\ViewHelpers}
 {namespace media=TYPO3\Media\ViewHelpers}
 <div{attributes -> f:format.raw()}>
