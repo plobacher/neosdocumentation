@@ -94,7 +94,7 @@ Weiter unten in der Datei müssen wir nun nur noch dafür Sorge tragen, dass die
 
 Im HTML-Template der Site müssen wir nun noch im Head-Bereich dafür sorgen, dass der Meta-Bereich angesprochen werden kann:
 
-```
+```html
 ...
 	<head>
 		<meta charset="utf-8">
@@ -143,7 +143,7 @@ Schulung:
 
 Weiter geht es mit dem Wunsch, eine Canonical-URL eingeben zu können - diese soll in der folgenden Form angezeigt werden:
 
-```
+```html
 <link rel="canonical" href="http://www.lobacher.de/canonical" />
 ```
 
@@ -198,7 +198,7 @@ page.head.metadata {
 
 Hier verwenden wir das Template-Objekt von TypoScript - daher müssen wir nun auch ein Template anlegen. Dafür legen wir zunächst den Ordner `TypoScript` innerhalb von `Packages/Application/Schulung.Meta/Resources/Private/Templates` an und erstellen dort eine Datei `CanonicalTag.html` mit dem folgenden Inhalt:
 
-```
+```html
 {namespace ts = TYPO3\TypoScript\ViewHelpers}
 
 <link rel="canonical" href="{ts:render(path: 'canonicalUrl')}" />
@@ -208,7 +208,7 @@ Hier verwenden wir das Template-Objekt von TypoScript - daher müssen wir nun au
 
 Nun müssen wir noch das Site-Template `` entsprechend anpassen:
 
-```
+```html
 <f:section name="metadata">
 	{description -> f:format.raw()}
 	{canonicalTag -> f:format.raw()}
@@ -233,6 +233,6 @@ page.head.metadata.canonicalTag = ${'<link rel="canonical" href="' + q(node).pro
 
 Es soll eine Funktionalität `noindex` und `nofollow` realisiert werden:
 
-```
+```html
 <meta name="robots" content="noindex, nofollow">
 ```
