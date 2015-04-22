@@ -28,7 +28,7 @@ Loaded Configuration File => /etc/php.ini
 
 Hier wird die Datei `/etc/php.ini` verwendet und man kann diese direkt zum Schreiben öffnen - wenn die letzte Zeile fehlt, muss die Datei angelegt werden. Folgende Einstellungen sollten darin enthalten sein:
 
-```
+```ini
 date.timezone= "Europe/Berlin"
 memory_limit = 512M
 max_execution_time = 300
