@@ -32,7 +32,7 @@ body {
 
 Nun legen wir das Verzeichnis `Package/Sites/Schulung.Website/Resources/Private/Templates/TypoScriptObjects` an und legen dorthinein eine Datei `Menu.html` mit folgendem Inhalt:
 
-```
+```html
 {namespace neos=TYPO3\Neos\ViewHelpers}
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
 <nav class="collapse navbar-collapse" role="navigation">
@@ -52,7 +52,7 @@ Nun legen wir das Verzeichnis `Package/Sites/Schulung.Website/Resources/Private/
 
 Im Template ersetzen wir nun folgenden Abschnitt:
 
-```
+```html
 <nav class="collapse navbar-collapse" role="navigation">
     <ul class="nav navbar-nav">
         <li class="active">
@@ -81,7 +81,7 @@ mit diesem hier:
 
 Vergleicht man das entstandene HTML, so fällt auf, dass noch etwas fehlt - der rechte Menüpunkt müsste ganz rechts am Rand auftauchen. Daher verändern wir unser `Menu.html` noch einmal:
 
-```
+```html
 {namespace neos=TYPO3\Neos\ViewHelpers}
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
 <nav class="collapse navbar-collapse" role="navigation">
@@ -89,18 +89,16 @@ Vergleicht man das entstandene HTML, so fällt auf, dass noch etwas fehlt - der 
 </nav>
 
 <f:section name="itemsList">
-    <ul class="nav navbar-nav">
-        <f:for each="{items}" as="item" iteration="menuIteration">
-            <f:if condition="{menuIteration.isLast}">
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-            </f:if>
-            <li{ts:render(path:'{item.state}.attributes') -> f:format.raw()}>
-            <neos:link.node node="{item.node}">{item.label}</neos:link.node>
-            </li>
-        </f:for>
-    </ul>
+	<ul class="nav navbar-nav">
+		<f:for each="{items}" as="item" iteration="menuIteration">
+			<f:if condition="{menuIteration.isLast}">
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+			</f:if>
+			<li{ts:render(path:'{item.state}.attributes') -> f:format.raw()}>
+				<neos:link.node node="{item.node}">{item.label}</neos:link.node>
+			</li>
+		</f:for>
+	</ul>
 </f:section>
-
 ``` 
-
