@@ -35,7 +35,7 @@ Dies machen wir im HTML-Template:
 
 Anstelle von dem folgenden Code:
 
-```
+```html
 <section class="white centered no-padding">
 	<div class="keyvisual"></div>
 </section>
@@ -43,7 +43,7 @@ Anstelle von dem folgenden Code:
 
 Schreiben wir nun diesen Code hinein:
 
-```
+```html
 <section class="white centered no-padding">
 	<f:if condition="{headerimage}">
 		<f:then>
@@ -58,7 +58,7 @@ Schreiben wir nun diesen Code hinein:
 
 Da wir hier den `media` Namespace verwenden, müssen wir diesen natürlich auch am Anfang der Datei deklarieren:
 
-```
+```html
 <!DOCTYPE html>
 {namespace neos=TYPO3\Neos\ViewHelpers}
 {namespace media=TYPO3\Media\ViewHelpers}
@@ -75,5 +75,4 @@ headerimage = ${q(node).property('headerimage')}
 
 parts {
 ...
-
 ```
