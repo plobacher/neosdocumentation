@@ -56,7 +56,7 @@ page = Page {
 
 Der NodyType muss nun natürlich auch gerendert werden - dafür wird ein Template `GoogleMaps.html` an die Stelle `Schulung.Website/Resources/Private/Templates/NodeTypes` gelegt:
 
-```
+```html
 <f:if condition="{isLatitudeAndLongitudeSet}">
 	<f:then>
 		<iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll={latitude},{longitude}&amp;t=m&amp;z=14&amp;output=embed"></iframe>
