@@ -44,16 +44,6 @@ Nun müssen wir die NodeType-Definition unter `` erweitern:
 ```
 'TYPO3.Neos.NodeTypes:Form':
   properties:
-    'formIdentifier':
-      ui:
-        inspector:
-          editorOptions:
-            values:
-              '': ~
-              'contact-form':
-                label: 'Contact form'
-'TYPO3.Neos.NodeTypes:Form':
-  properties:
     formIdentifier:
       ui:
         inspector:
@@ -62,7 +52,7 @@ Nun müssen wir die NodeType-Definition unter `` erweitern:
               '': ~
               # Maps to the file Schulung.Website/Resources/Private/Form/contact-form.yaml
               'contact-form':
-                label: 'Kontakt-Formular'
+                label: 'Contact form'
 ```
 
 ## Kontaktformular anlegen
