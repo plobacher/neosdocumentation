@@ -39,7 +39,7 @@ TYPO3:
 
 ## NodeType des Formulars anlegen
 
-Nun müssen wir die NodeType-Definition unter `` erweitern:
+Nun müssen wir die NodeType-Definition unter `Packages/Sites/Schulung.Website/Configuration/NodeTypes.yaml` erweitern:
 
 ```
 'TYPO3.Neos.NodeTypes:Form':
